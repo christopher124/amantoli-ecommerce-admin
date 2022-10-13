@@ -1,24 +1,27 @@
-<section class="h-100 gradient-form" style="background-color: #eee">
+<section class="h-100 gradient-form" style="background-color: #0f4553">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
+      <!-- Tamaño del componente -->
       <div class="col-xl-10">
         <div class="card rounded-3 text-black">
           <div class="row g-0">
             <div class="col-lg-6">
-              <div class="card-body p-md-5 mx-md-4">
+              <div class="card-body p-md-4 mx-md-3">
                 <div class="text-center">
-                  <img [src]="imgSelect" style="width: 185px" alt="logo" />
-                  <h4 class="mt-1 mb-5 pb-1">
-                    Panel de administración de la tienda Amantoli
-                  </h4>
+                  <img
+                    src="../../../assets/img/Originals/AMANTOLI.png"
+                    style="width: 270px; padding-top: 0px"
+                    alt="logo"
+                  />
+                  <h3 class="mt-1 mb-15 pb-1">Panel de administración</h3>
                 </div>
 
                 <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
                   <div class="form-group">
-                    <label for="signin-email">Correo electronico</label>
+                    <label for="signin-email">Correo electrónico</label>
                     <input
                       type="email"
-                      class="form-control"
+                      class="form-control text-xl"
                       name="email"
                       [(ngModel)]="user.email"
                       placeholder="Correo electrónico"
@@ -35,7 +38,7 @@
                         class="form-control appended-form-control"
                         name="password"
                         [(ngModel)]="user.password"
-                        placeholder="Contraseña"
+                        placeholder="Ingrese la contraseña"
                         required=""
                       />
                       <div class="input-group-append-overlay">
@@ -56,15 +59,19 @@
                 </form>
               </div>
             </div>
-            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                <h4 class="mb-4">Somos más que una empresa</h4>
-                <p class="small mb-0">
-                  "La mejor inversión que hice durante mucho tiempo. Solo puedo
-                  recomendarlo para otros usuarios".
-                </p>
-                <p>-Usuario administrador</p>
-              </div>
+            <div class="img-fluid">
+              <img
+                src="../../../assets/img/Originals/arte-admin6.png"
+                style="
+                  display: block;
+                  margin: auto;
+                  max-width: 100%;
+                  width: 510px;
+                  height: 100%;
+                "
+                class="img-fluid"
+                alt="logo"
+              />
             </div>
           </div>
         </div>
