@@ -24,10 +24,10 @@ export class LoginComponent implements OnInit {
   public imgSelect: any;
   constructor(private _adminService: AdminService, private _router: Router) {
     this.token = this._adminService.getToken();
-    this._adminService.obtener_config_admin(this.token).subscribe(
+    this._adminService.obtener_config_public().subscribe(
       (response) => {
         this.config = response.data;
-        this.imgSelect = this.url + 'obtener_logo/' + this.config.logo;
+
         console.log(response);
       },
       (error) => {
@@ -58,19 +58,23 @@ export class LoginComponent implements OnInit {
         (resp) => {
           if (resp.data == undefined) {
             iziToast.show({
-              title: 'ERROR',
+              title: 'Error',
               class: 'text-danger',
               titleColor: '#ff0000',
               position: 'topRight',
+              color: 'red', // blue, red, green, yellow
               message: resp.message,
             });
           } else {
             iziToast.show({
-              title: 'Success',
+              title: 'Exito',
               class: 'text-danger',
               titleColor: '#44EA0A',
               position: 'topRight',
               message: 'Bienvenido ' + resp.data.rol,
+              messageColor: '#fff',
+              theme: 'dark',
+              progressBarColor: 'rgb(0, 255, 184)',
             });
             this.usuario = resp.data;
 

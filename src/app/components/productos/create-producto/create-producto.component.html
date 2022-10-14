@@ -1,143 +1,158 @@
-<app-siderbar></app-siderbar>
+<main class="container-fluid pb-3 pb-sm-4">
+  <section class="cs-offcanvas-enabled row pb-3 pb-md-4">
+    <div class="col-xl-9">
+      <app-siderbar></app-siderbar>
 
-<!-- Page title-->
-<div class="border-bottom pt-5 mt-2 mb-5">
-  <h1 class="mt-2 mt-md-4 mb-3 pt-5">Productos</h1>
-  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-    <p class="text-muted">
-      Este módulo lista todos los productos de la tienda.
-    </p>
-  </div>
-</div>
-
-<form (ngSubmit)="registro(registroForm)" #registroForm="ngForm">
-  <div class="card box-shadow-sm">
-    <div class="card-header">
-      <h5 style="margin-bottom: 0px">Registro de producto</h5>
-    </div>
-    <div class="card-body mr-12">
-      <div class="row">
-        <div class="col-lg-8">
-          <div class="row">
-            <div class="col-lg-12 form-group">
-              <label for="">Titulo de producto</label>
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Titulo de producto"
-                required
-                name="titulo"
-                [(ngModel)]="producto.titulo"
-              />
-            </div>
-            <div class="col-lg-4 form-group">
-              <label for="">Stock</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Cantidad inicial"
-                required
-                name="stock"
-                [(ngModel)]="producto.stock"
-              />
-            </div>
-            <div class="col-lg-4 form-group">
-              <label for="">Precio</label>
-              <input
-                type="number"
-                class="form-control"
-                placeholder="Precio"
-                required
-                name="precio"
-                [(ngModel)]="producto.precio"
-              />
-            </div>
-            <div class="col-lg-4 form-group">
-              <label for="">Categoría</label>
-              <select
-                class="form-control custom-select"
-                id="select-input"
-                required
-                name="categoria"
-                [(ngModel)]="producto.categoria"
-              >
-                <option value="" selected disabled>Seleccionar</option>
-                <option
-                  value="{{ item.titulo }}"
-                  *ngFor="let item of config_global.categorias"
-                >
-                  {{ item.titulo }}
-                </option>
-              </select>
-            </div>
-
-            <div class="col-lg-12 form-group">
-              <label for="">Descripción corta</label>
-              <textarea
-                class="form-control"
-                placeholder="Titulo de producto"
-                required
-                name="descripcion"
-                [(ngModel)]="producto.descripcion"
-                rows="5"
-              ></textarea>
-            </div>
-
-            <div class="col-lg-12 form-group">
-              <editor
-                [init]="config"
-                name="contenido"
-                [(ngModel)]="producto.contenido"
-              ></editor>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="row">
-            <div class="col-lg-12 form-group">
-              <label for="">Portada</label>
-              <div class="custom-file">
-                <input
-                  class="custom-file-input"
-                  type="file"
-                  id="file-input"
-                  (change)="fileChangeEvent($event)"
-                />
-                <label
-                  class="custom-file-label"
-                  id="input-portada"
-                  for="file-input"
-                  style="white-space: nowrap; overflow: hidden"
-                  >Seleccionar imagen</label
-                >
-              </div>
-            </div>
-            <div class="col-lg-12">
-              <img
-                [src]="imgSelect"
-                class="img-thumbnail"
-                alt="Rounded image"
-              />
-            </div>
-          </div>
+      <!-- Page title-->
+      <div class="border-bottom pt-5 mt-2 mb-5">
+        <h1 class="mt-2 mt-md-4 mb-3 pt-5">Productos</h1>
+        <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
+          <p class="text-muted">
+            Este módulo lista todos los productos de la tienda.
+          </p>
         </div>
       </div>
+
+      <form (ngSubmit)="registro(registroForm)" #registroForm="ngForm">
+        <div class="card box-shadow-sm">
+          <div class="card-header">
+            <h5 style="margin-bottom: 0px">Registro de producto</h5>
+          </div>
+          <div class="card-body mr-12">
+            <div class="row">
+              <div class="col-lg-8">
+                <div class="row">
+                  <div class="col-lg-12 form-group">
+                    <label for="">Titulo de producto</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Titulo de producto"
+                      required
+                      name="titulo"
+                      [(ngModel)]="producto.titulo"
+                    />
+                  </div>
+                  <div class="col-lg-4 form-group">
+                    <label for="">Stock</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Cantidad inicial"
+                      required
+                      name="stock"
+                      [(ngModel)]="producto.stock"
+                    />
+                  </div>
+                  <div class="col-lg-4 form-group">
+                    <label for="">Precio</label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      placeholder="Precio"
+                      required
+                      name="precio"
+                      [(ngModel)]="producto.precio"
+                    />
+                  </div>
+                  <div class="col-lg-4 form-group">
+                    <label for="">Categoría</label>
+                    <select
+                      class="form-control custom-select"
+                      id="select-input"
+                      required
+                      name="categoria"
+                      [(ngModel)]="producto.categoria"
+                    >
+                      <option value="" selected disabled>Seleccionar</option>
+                      <option
+                        value="{{ item.titulo }}"
+                        *ngFor="let item of config_global.categorias"
+                      >
+                        {{ item.titulo }}
+                      </option>
+                    </select>
+                  </div>
+
+                  <div class="col-lg-12 form-group">
+                    <label for="">Descripción corta</label>
+                    <textarea
+                      class="form-control"
+                      placeholder="Titulo de producto"
+                      required
+                      name="descripcion"
+                      [(ngModel)]="producto.descripcion"
+                      rows="5"
+                    ></textarea>
+                  </div>
+
+                  <div class="col-lg-12 form-group">
+                    <editor
+                      [init]="config"
+                      name="contenido"
+                      [(ngModel)]="producto.contenido"
+                    ></editor>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="row">
+                  <div class="col-lg-12 form-group">
+                    <label for="">Portada</label>
+                    <div class="custom-file">
+                      <input
+                        class="custom-file-input"
+                        type="file"
+                        id="file-input"
+                        (change)="fileChangeEvent($event)"
+                      />
+                      <label
+                        class="custom-file-label"
+                        id="input-portada"
+                        for="file-input"
+                        style="white-space: nowrap; overflow: hidden"
+                        >Seleccionar imagen</label
+                      >
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <img
+                      [src]="imgSelect"
+                      class="img-thumbnail"
+                      alt="Rounded image"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button
+              *ngIf="!load_btn"
+              class="btn btn-primary mr-3"
+              type="submit"
+            >
+              Crear producto
+            </button>
+            <button
+              *ngIf="load_btn"
+              type="button"
+              class="btn btn-secondary"
+              disabled
+            >
+              <span
+                class="spinner-grow spinner-grow-sm me-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Creando...
+            </button>
+            <a class="btn btn-warning" [routerLink]="['/panel/productos']"
+              >Regresar</a
+            >
+          </div>
+        </div>
+      </form>
     </div>
-    <div class="card-footer">
-      <button *ngIf="!load_btn" class="btn btn-primary mr-3" type="submit">
-        Crear producto
-      </button>
-      <button *ngIf="load_btn" type="button" class="btn btn-secondary" disabled>
-        <span
-          class="spinner-grow spinner-grow-sm me-2"
-          role="status"
-          aria-hidden="true"
-        ></span>
-        Creando...
-      </button>
-      <a class="btn btn-warning" [routerLink]="['/panel/productos']"
-        >Regresar</a
-      >
-    </div>
-  </div>
-</form>
+  </section>
+</main>
