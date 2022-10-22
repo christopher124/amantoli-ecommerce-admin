@@ -1,123 +1,138 @@
-<main class="container-fluid pb-3 pb-sm-4">
-  <section class="cs-offcanvas-enabled row pb-3 pb-md-4">
-    <div class="col-xl-9">
-      <app-siderbar></app-siderbar>
-      <!-- Page title-->
-      <div class="border-bottom pt-5 mt-2 mb-5">
-        <h1 class="mt-2 mt-md-4 mb-3 pt-5">cupones</h1>
-        <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-          <p class="text-muted">
-            Este módulo lista todos los cupones de la tienda.
-          </p>
-          <p class="font-size-sm font-weight-medium pl-md-4">
-            <a class="text-nowrap" [routerLink]="['/panel/cupones/registro']"
-              >Registrar nuevo<i
-                class="cxi-angle-right font-size-base align-middle ml-1"
-              ></i
-            ></a>
-          </p>
-        </div>
-      </div>
+<app-siderbar></app-siderbar>
 
-      <div class="card box-shadow-sm">
-        <div class="card-header">
-          <h5 style="margin-bottom: 0px">Filtro de cupones</h5>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <!-- Header -->
+        <div class="header mt-md-5">
+          <div class="header-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">Módulo</h6>
+
+                <!-- Title -->
+                <h1 class="header-title">Cupones</h1>
+              </div>
+            </div>
+            <!-- / .row -->
+          </div>
         </div>
-        <div class="card-header">
-          <div class="row">
-            <div class="col-6">
-              <div class="input-group">
-                <input
-                  class="form-control"
-                  type="text"
-                  placeholder="burcar por codigo"
-                  name="filtro"
-                  [(ngModel)]="filtro"
-                />
-                <button
+
+        <!-- Alert -->
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-header">
+            <!-- Title -->
+            <h4 class="card-header-title">Mostrando todos tus clientes</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <div class="input-group input-group-merge">
+                  <input
+                    type="text"
+                    class="form-control form-control-appended"
+                    placeholder="Buscar cupón"
+                    name="filtro"
+                    [(ngModel)]="filtro"
+                  />
+                  <div class="input-group-append">
+                    <button class="btn btn-primary" (click)="filtrar()">
+                      Buscar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <a
                   class="btn btn-primary"
-                  (click)="filtrar()"
-                  type="button"
+                  [routerLink]="['/panel/cupones/registro']"
+                  routerLinkActive="router-link-active"
+                  style="cursor: pointer"
+                  >Nuevo cupón</a
                 >
-                  Filtrar
-                </button>
               </div>
             </div>
           </div>
-        </div>
-        <div class="card-body">
           <div class="table-responsive">
-            <table class="table table-bordered">
-              <thead class="thead-dark">
+            <table class="table table-sm table-nowrap card-table">
+              <thead>
                 <tr>
-                  <th>Codigo</th>
+                  <th>Código</th>
+                  <th>Canjes disp.</th>
                   <th>Tipo</th>
                   <th>Valor</th>
-                  <th>Limite</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
-              <tbody *ngIf="load_data">
-                <tr>
-                  <td class="text-center" colspan="5">
-                    <div
-                      class="spinner-border"
-                      style="width: 3rem; height: 3rem"
-                      role="status"
-                    >
-                      <span class="visually-hidden">Loading...</span>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-
-              <ng-container *ngIf="!load_data">
-                <tbody
-                  *ngFor="
-                    let item of cupones
-                      | slice
-                        : (page - 1) * pageSize
-                        : (page - 1) * pageSize + pageSize
-                  "
-                >
-                  <tr>
-                    <td>{{ item.codigo }}</td>
-                    <td>{{ item.tipo }}</td>
-                    <td>{{ item.valor }}</td>
-
-                    <td>{{ item.limite }} restantes</td>
-
+              <tbody class="font-size-base" *ngIf="!load_data">
+                <ng-container>
+                  <tr
+                    *ngFor="
+                      let item of cupones
+                        | slice
+                          : (page - 1) * pageSize
+                          : (page - 1) * pageSize + pageSize
+                    "
+                  >
                     <td>
-                      <div class="btn-group dropdown d-inline-block mb-3 mr-2">
+                      <a class="text-primary">{{ item.codigo }}</a
+                      ><br />
+                      <small _ngcontent-iam-c52="" class="text-muted">
+                        {{ item.disponibilidad }}
+                      </small>
+                    </td>
+                    <td>
+                      {{ item.limite }}
+                    </td>
+                    <td>
+                      {{ item.tipo }}
+                    </td>
+                    <td>
+                      {{ item.valor }}
+                    </td>
+                    <td>
+                      <div class="dropdown">
                         <button
+                          class="btn btn-secondary dropdown-toggle"
                           type="button"
-                          class="btn btn-outline-secondary btn-sm btn-sm dropdown-toggle"
+                          id="dropdownMenuButtonAlias"
                           data-toggle="dropdown"
                           aria-haspopup="true"
                           aria-expanded="false"
                         >
                           Opciones
                         </button>
-                        <div class="dropdown-menu">
-                          <a
-                            [routerLink]="['/panel/cupones', item._id]"
-                            class="dropdown-item"
-                            >Editar cupon</a
-                          >
-                          <a
-                            class="dropdown-item"
-                            style="cursor: pointer"
-                            data-toggle="modal"
-                            [attr.data-target]="'#delete-' + item._id"
-                            >Eliminar cupon</a
-                          >
-                        </div>
+
+                        <ul
+                          class="dropdown-menu"
+                          aria-labelledby="dropdownMenuButtonAlias"
+                        >
+                          <li>
+                            <a
+                              class="dropdown-item"
+                              [routerLink]="['/panel/cupones', item._id]"
+                              >Editar</a
+                            >
+                            <a
+                              class="dropdown-item"
+                              style="cursor: pointer"
+                              data-toggle="modal"
+                              [attr.data-target]="'#delete-' + item._id"
+                              >Eliminar</a
+                            >
+                          </li>
+                        </ul>
                       </div>
 
                       <div
                         class="modal fade"
                         id="delete-{{ item._id }}"
                         tabindex="-1"
+                        role="dialog"
                         style="display: none"
                         aria-hidden="true"
                       >
@@ -126,55 +141,82 @@
                           role="document"
                         >
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h4 class="modal-title">Eliminar cupon</h4>
-                              <button
-                                class="close"
-                                type="button"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                              >
-                                <span aria-hidden="true">x</span>
-                              </button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Desea eliminar el cupon {{ item.codigo }}</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button
-                                class="btn btn-secondary btn-sm"
-                                type="button"
-                                data-dismiss="modal"
-                              >
-                                Cancelar
-                              </button>
-                              <button
-                                class="btn btn-primary btn-shadow btn-sm"
-                                type="button"
-                                (click)="eliminar(item._id)"
-                              >
-                                si, eliminar
-                              </button>
+                            <div
+                              class="modal-card card"
+                              data-list='{"valueNames": ["name"]}'
+                            >
+                              <div class="card-header">
+                                <!-- Title -->
+                                <h4
+                                  class="card-header-title"
+                                  id="exampleModalCenterTitle"
+                                >
+                                  Confirmación de eliminación
+                                </h4>
+
+                                <!-- Close -->
+                                <button
+                                  type="button"
+                                  class="close"
+                                  data-dismiss="modal"
+                                  aria-label="Close"
+                                >
+                                  <span aria-hidden="true">×</span>
+                                </button>
+                              </div>
+
+                              <div class="card-body">
+                                <p>Desea eliminar el cupón?</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button
+                                  type="button"
+                                  class="btn btn-secondary"
+                                  data-dismiss="modal"
+                                >
+                                  Cerrar
+                                </button>
+                                <button
+                                  type="button"
+                                  class="btn btn-danger"
+                                  (click)="eliminar(item._id)"
+                                >
+                                  Eliminar
+                                </button>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </td>
                   </tr>
-                </tbody></ng-container
-              >
+                </ng-container>
+              </tbody>
+              <tbody *ngIf="load_data">
+                <tr>
+                  <td colspan="5" class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                      <span class="visually-hidden"></span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
-        <div class="card-footer">
-          <ngb-pagination
-            [collectionSize]="cupones.length"
-            [(page)]="page"
-            [pageSize]="pageSize"
-            aria-label="Default pagination"
-          ></ngb-pagination>
-        </div>
+        <ngb-pagination
+          *ngIf="cupones.length >= 1"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [maxSize]="10"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          [collectionSize]="cupones.length"
+        ></ngb-pagination>
+
+        <br />
       </div>
     </div>
-  </section>
-</main>
+    <!-- / .row -->
+  </div>
+</div>

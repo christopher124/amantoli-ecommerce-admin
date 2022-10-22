@@ -1,121 +1,221 @@
 <app-siderbar></app-siderbar>
 
-<!-- Page title-->
-<div class="border-bottom pt-5 mt-2 mb-5">
-  <h1 class="mt-2 mt-md-4 mb-3 pt-5">Cupones</h1>
-  <div class="d-flex flex-wrap flex-md-nowrap justify-content-between">
-    <p class="text-muted">Este módulo crea los cupones para la tienda.</p>
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <!-- Header -->
+        <div class="header mt-md-5">
+          <div class="header-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">Módulo</h6>
+
+                <!-- Title -->
+                <h1 class="header-title">Cupones</h1>
+              </div>
+            </div>
+            <!-- / .row -->
+          </div>
+        </div>
+
+        <!-- Alert -->
+
+        <ng-container *ngIf="!load_data">
+          <!-- Card -->
+          <form
+            *ngIf="cupon != undefined"
+            #actualizarForm="ngForm"
+            (ngSubmit)="actualizar(actualizarForm)"
+          >
+            <div class="card">
+              <div class="card-header">
+                <!-- Title -->
+                <h4 class="card-header-title">Registro de un nuevo producto</h4>
+              </div>
+
+              <ng-container *ngIf="!load_data">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Código (*)</label>
+                            <input
+                              type="text"
+                              required
+                              class="form-control"
+                              placeholder="Código del cupón"
+                              name="codigo"
+                              [(ngModel)]="cupon.codigo"
+                            />
+                          </div>
+                        </div>
+                        <!-- <div class="col-4">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Tipo (*)</label>
+                            <select
+                              class="form-control custom-select"
+                              id="select-input"
+                              required
+                              name="disponibilidad"
+                              [(ngModel)]="cupon.disponibilidad"
+                            >
+                              <option value="" selected disabled>
+                                Seleccionar
+                              </option>
+                              <option value="Peru">Peru</option>
+                              <option value="Exterior">Exterior</option>
+                            </select>
+                          </div>
+                        </div> -->
+                        <div class="col-4">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Canjes (*)</label>
+                            <input
+                              type="number"
+                              class="form-control"
+                              required
+                              placeholder="Número de canjes"
+                              name="limite"
+                              [(ngModel)]="cupon.limite"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-4">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1"
+                              >Tipo descuento (*)</label
+                            >
+                            <select
+                              class="form-control custom-select"
+                              id="select-input"
+                              required
+                              name="tipo"
+                              [(ngModel)]="cupon.tipo"
+                            >
+                              <option value="" selected disabled>
+                                Seleccionar
+                              </option>
+                              <option value="Porcentaje">Porcentaje</option>
+                              <option value="Valor fijo">Valor fijo</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-4">
+                          <label for="validationCustom01" class="form-label">
+                            Valor
+                          </label>
+                          <input
+                            class="form-control"
+                            type="number"
+                            placeholder="Valor del descuento"
+                            required
+                            name="valor"
+                            [(ngModel)]="cupon.valor"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer">
+                  <a
+                    class="btn btn-warning btn-shadow mr-3"
+                    [routerLink]="['panel/cupones']"
+                    routerLinkActive="router-link-active"
+                    >Regresar</a
+                  >
+                  <button
+                    *ngIf="!load_btn"
+                    class="btn btn-primary btn-shadow"
+                    type="submit"
+                  >
+                    Actualizar
+                  </button>
+
+                  <button
+                    disabled
+                    *ngIf="load_btn"
+                    type="button"
+                    class="btn btn-primary btn-shadow"
+                  >
+                    <span
+                      class="spinner-border spinner-border-sm me-2"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Actualizando...
+                  </button>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="load_data">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-12 text-center">
+                      <div
+                        class="spinner-border"
+                        style="width: 3rem; height: 3rem"
+                        role="status"
+                      >
+                        <span class="visually-hidden"></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </div>
+          </form>
+          <ng-container *ngIf="cupon == undefined">
+            <div class="card">
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-5 col-xl-4 my-5">
+                    <div class="text-center">
+                      <!-- Preheading -->
+                      <h6 class="text-uppercase text-muted mb-4">404 error</h6>
+
+                      <!-- Heading -->
+                      <h1 class="display-4 mb-3">There’s no page here 😭</h1>
+
+                      <!-- Subheading -->
+                      <p class="text-muted mb-4">
+                        Looks like you ended up here by accident?
+                      </p>
+
+                      <!-- Button -->
+                      <a
+                        [routerLink]="['/cupones']"
+                        class="btn btn-lg btn-primary"
+                      >
+                        Regresar a cupones
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        <ng-container *ngIf="load_data">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 text-center">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <!-- / .row -->
   </div>
 </div>
-
-<ng-container *ngIf="load_data">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-12 text-center">
-        <div
-          class="spinner-border"
-          style="width: 3rem; height: 3rem"
-          role="status"
-        >
-          <span class="visually-hidden">Loading...</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>
-<ng-container *ngIf="!load_data">
-  <ng-container *ngIf="cupon == undefined">
-    <div class="card">
-      <div class="card-body">
-        <h3 class="text-center">No se encontro el registro</h3>
-        <div class="row">
-          <div class="col-3 mx-auto">
-            <img src="assets/img/advertencia.png" alt="" style="width: 100%" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </ng-container>
-  <ng-container *ngIf="cupon != undefined">
-    <form #actualizarForm="ngForm" (ngSubmit)="actualizar(actualizarForm)">
-      <div class="card box-shadow-sm">
-        <div class="card-header">
-          <h5 style="margin-bottom: 0px">Actulizacion de cupon</h5>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 form-group">
-              <label for="validationCustom01" class="form-label"
-                >Codigo de cupón</label
-              >
-              <input
-                class="form-control"
-                type="text"
-                name="codigo"
-                [(ngModel)]="cupon.codigo"
-                placeholder="Codigo de cupón "
-                required
-              />
-            </div>
-            <div class="col-lg-3 col-md-6">
-              <label for="validationCustom01" class="form-label">Tipo</label>
-              <select
-                class="form-control custom-select"
-                name="tipo"
-                [(ngModel)]="cupon.tipo"
-                required
-              >
-                <option value="" disabled selected>Selecionar</option>
-                <option value="Porcentaje">Porcentaje</option>
-                <option value="Valor fijo">Valor fijo</option>
-              </select>
-            </div>
-            <div class="col-lg-3 col-md-6 form-group">
-              <label for="validationCustom01" class="form-label">Valor</label>
-              <input
-                class="form-control"
-                type="number"
-                name="valor"
-                [(ngModel)]="cupon.valor"
-                placeholder="Valor del descuento"
-                required
-              />
-            </div>
-            <div class="col-lg-3 col-md-6 form-group">
-              <label for="validationCustom01" class="form-label">Limite</label>
-              <input
-                class="form-control"
-                type="number"
-                name="limite"
-                [(ngModel)]="cupon.limite"
-                placeholder="Valor maximo"
-                required
-              />
-            </div>
-          </div>
-        </div>
-        <div class="card-footer">
-          <button *ngIf="!load_btn" class="btn btn-primary mr-3" type="submit">
-            Actualizar cupón
-          </button>
-          <button
-            *ngIf="load_btn"
-            type="button"
-            class="btn btn-secondary"
-            disabled
-          >
-            <span
-              class="spinner-grow spinner-grow-sm me-2"
-              role="status"
-              aria-hidden="true"
-            ></span>
-            Actualizando...
-          </button>
-          <a [routerLink]="['/panel/cupones']" class="btn btn-warning"
-            >Regresar</a
-          >
-        </div>
-      </div>
-    </form>
-  </ng-container>
-</ng-container>

@@ -23,6 +23,7 @@ import { UpdateCuponComponent } from './components/cupones/update-cupon/update-c
 import { ConfigComponent } from './components/config/config.component';
 import { VariedadProductoComponent } from './components/productos/variedad-producto/variedad-producto.component';
 import { GaleriaProductoComponent } from './components/productos/galeria-producto/galeria-producto.component';
+import { TopnavComponent } from './components/topnav/topnav.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { GaleriaProductoComponent } from './components/productos/galeria-product
     ConfigComponent,
     VariedadProductoComponent,
     GaleriaProductoComponent,
+    TopnavComponent,
   ],
   imports: [
     BrowserModule,

@@ -16,7 +16,6 @@ export class IndexCuponComponent implements OnInit {
   public filtro = '';
   public token;
   public load_btn = true;
-
   constructor(private _cuponService: CuponService) {
     this.token = localStorage.getItem('token');
   }

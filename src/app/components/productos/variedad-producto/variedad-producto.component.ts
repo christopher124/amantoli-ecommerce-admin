@@ -18,6 +18,7 @@ export class VariedadProductoComponent implements OnInit {
   public url;
   public nueva_variedad = '';
   public load_btn = false;
+  public load_data = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -29,16 +30,17 @@ export class VariedadProductoComponent implements OnInit {
       this.id = params['id'];
       console.log(this.id);
 
+      this.load_data = true;
       this._productoService
         .obtener_producto_admin(this.id, this.token)
         .subscribe(
           (res) => {
-            console.log(res);
             if (res.data == undefined) {
               this.producto = undefined;
+              this.load_data = false;
             } else {
               this.producto = res.data;
-              console.log(this.producto);
+              this.load_data = false;
             }
           },
           (err) => {

@@ -20,6 +20,7 @@ export class GaleriaProductoComponent implements OnInit {
   public file: File | undefined;
   public load_btn_eliminar = false;
   public load_btn = false;
+  public load_data = false;
 
   constructor(
     private _route: ActivatedRoute,
@@ -36,14 +37,16 @@ export class GaleriaProductoComponent implements OnInit {
   }
 
   init_data() {
+    this.load_data = true;
     this._productoService.obtener_producto_admin(this.id, this.token).subscribe(
       (res) => {
         console.log(res);
         if (res.data == undefined) {
           this.producto = undefined;
+          this.load_data = false;
         } else {
           this.producto = res.data;
-          console.log(this.producto);
+          this.load_data = false;
         }
       },
       (err) => {

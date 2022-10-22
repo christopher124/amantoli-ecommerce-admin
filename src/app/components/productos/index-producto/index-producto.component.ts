@@ -12,19 +12,25 @@ declare var $: any;
   styleUrls: ['./index-producto.component.css'],
 })
 export class IndexProductoComponent implements OnInit {
-  public load_data = true;
-  public filtro = '';
-  public page = 1;
-  public pageSize = 10;
-  public token;
   public productos: Array<any> = [];
-  public arr_productos: Array<any> = [];
-  public url;
+  public productos_const: Array<any> = [];
+  public token = localStorage.getItem('token');
+  public page = 1;
+  public pageSize = 15;
+  public filtro = '';
+
+  public load_btn_etiqueta = false;
+  public load_data_etiqueta = false;
+  public nueva_etiqueta = '';
+  public etiquetas: Array<any> = [];
+  public load_del_etiqueta = false;
   public load_btn = false;
-  constructor(private _productoService: ProductoService) {
-    this.token = localStorage.getItem('token');
-    this.url = GLOBAL.url;
-  }
+  public load_data = false;
+
+  public load_estado = false;
+  public url = GLOBAL.url;
+
+  constructor(private _productoService: ProductoService) {}
 
   ngOnInit(): void {
     this.init_data();
@@ -37,7 +43,7 @@ export class IndexProductoComponent implements OnInit {
           console.log(res);
           this.productos = res.data;
           this.productos.forEach((e) => {
-            this.arr_productos.push({
+            this.productos_const.push({
               titulo: e.titulo,
               stock: e.stock,
               precio: e.precio,
@@ -45,7 +51,7 @@ export class IndexProductoComponent implements OnInit {
               nventas: e.nventas,
             });
           });
-          console.log(this.arr_productos);
+          console.log(this.productos_const);
 
           this.load_data = false;
         },
@@ -108,7 +114,7 @@ export class IndexProductoComponent implements OnInit {
     let worksheet = workbook.addWorksheet('Reporte de productos');
 
     worksheet.addRow(undefined);
-    for (let x1 of this.arr_productos) {
+    for (let x1 of this.productos_const) {
       let x2 = Object.keys(x1);
 
       let temp = [];
