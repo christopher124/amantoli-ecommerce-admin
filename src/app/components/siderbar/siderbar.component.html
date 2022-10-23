@@ -17,7 +17,7 @@
     </button>
 
     <!-- Brand -->
-    <a class="navbar-brand" [routerLink]="['/clientes']">
+    <a class="navbar-brand" [routerLink]="['/inicio']">
       <img
         src="./assets/img/logo.svg"
         class="navbar-brand-img mx-auto"
@@ -63,25 +63,20 @@
 
     <!-- Collapse -->
     <div class="collapse navbar-collapse" id="sidebarCollapse">
-      <!-- Form -->
-      <form class="mt-4 mb-3 d-md-none">
-        <div class="input-group input-group-rounded input-group-merge">
-          <input
-            type="search"
-            class="form-control form-control-rounded form-control-prepended"
-            placeholder="Search"
-            aria-label="Search"
-          />
-          <div class="input-group-prepend">
-            <div class="input-group-text">
-              <span class="fe fe-search"></span>
-            </div>
-          </div>
-        </div>
-      </form>
+      <!-- Heading -->
+      <h6 class="navbar-heading">CONTROL</h6>
 
       <!-- Navigation -->
-      <ul class="navbar-nav">
+      <ul class="navbar-nav mb-md-4">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/inicio']"
+            routerLinkActive="active"
+          >
+            <i class="fa-brands fa-dashcube mr-3"></i> Panel
+          </a>
+        </li>
         <li class="nav-item">
           <a
             class="nav-link"
@@ -91,22 +86,6 @@
             <i class="fe fe-user"></i> Clientes
           </a>
         </li>
-
-        <li class="nav-item d-md-none">
-          <a class="nav-link" href="#sidebarModalActivity" data-toggle="modal">
-            <span class="fe fe-bell"></span> Notifications
-          </a>
-        </li>
-      </ul>
-
-      <!-- Divider -->
-      <hr class="navbar-divider my-3" />
-
-      <!-- Heading -->
-      <h6 class="navbar-heading">CONTROL</h6>
-
-      <!-- Navigation -->
-      <ul class="navbar-nav mb-md-4">
         <li class="nav-item">
           <a
             class="nav-link"
@@ -140,7 +119,12 @@
             [routerLink]="['/panel/configuraciones']"
             routerLinkActive="active"
           >
-            <i class="fe fe-settings"></i> Configuraciones
+            <i class="fa-solid fa-gears mr-3"></i> Configuraciones
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer" (click)="logout()">
+            <span class="fe fe-log-out me-4"></span> Cerrar sesión
           </a>
         </li>
       </ul>
