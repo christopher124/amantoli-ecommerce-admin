@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
@@ -15,16 +16,40 @@ export class CreateClienteComponent implements OnInit {
   };
   public token;
   public load_btn = false;
+  public fechamin: Date | any;
+  public fechamax: Date | any;
+  public fechaStrMinima: String | any;
+  public fechaStrMaxima: String | any;
 
   constructor(
     private _clienteService: ClienteService,
     private _adminService: AdminService,
-    private _router: Router
+    private _router: Router,
+    private _datePipe: DatePipe
   ) {
     this.token = this._adminService.getToken();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fechamax = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth() - 6,
+      new Date().getDate()
+    );
+    this.fechaStrMaxima = this._datePipe.transform(this.fechamax, 'yyyy-MM-dd');
+
+    this.fechamin = new Date(
+      new Date().getFullYear() - 100,
+      new Date().getMonth(),
+      new Date().getDate()
+    );
+    this.fechaStrMinima = this._datePipe.transform(
+      this.fechaStrMinima,
+      'yyyy-MM-dd'
+    );
+
+    this.token;
+  }
 
   registro(registroForm: any) {
     if (registroForm.valid) {

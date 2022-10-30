@@ -87,7 +87,7 @@ export class IndexProductoComponent implements OnInit {
           class: 'text-success',
           titleColor: '#1DC74C',
           position: 'topRight',
-          message: 'Se eliminó correctamente el cliente.',
+          message: 'Se eliminó correctamente el producto.',
         });
         $('#delete-' + id).modal('hide');
         $('.modal-backdrop').removeClass('show');

@@ -56,7 +56,7 @@ export class UpdateCuponComponent implements OnInit {
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se actulizo correctamente el nuevo cupón.',
+              message: 'Se actulizo correctamente el cupón.',
             });
             this.load_btn = false;
 

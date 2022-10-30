@@ -6,15 +6,6 @@
         class="input-group input-group-flush input-group-merge"
         data-list='{"valueNames": ["name"]}'
       >
-        <!-- Input -->
-        <input
-          type="search"
-          class="form-control form-control-prepended dropdown-toggle list-search"
-          data-toggle="dropdown"
-          placeholder="Search"
-          aria-label="Search"
-        />
-
         <!-- Prepend -->
         <div class="input-group-prepend">
           <div class="input-group-text">
@@ -47,6 +38,9 @@
 
         <!-- Menu -->
         <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" style="cursor: pointer">
+            <span class="fa-solid fa-user me-4"></span> Hoa
+          </a>
           <a class="dropdown-item" style="cursor: pointer" (click)="logout()">
             <span class="fe fe-log-out me-4"></span> Cerrar sesión
           </a>

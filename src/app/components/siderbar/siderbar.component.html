@@ -42,7 +42,7 @@
         >
           <div class="avatar avatar-sm avatar-online">
             <img
-              src="./assets/img/avatars/profiles/avatar-1.jpg"
+              src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
               class="avatar-img rounded-circle"
               alt="..."
             />
@@ -54,6 +54,9 @@
           class="dropdown-menu dropdown-menu-right"
           aria-labelledby="sidebarIcon"
         >
+          <a class="dropdown-item" style="cursor: pointer">
+            <span class="fa-solid fa-user me-4"></span> Hoa
+          </a>
           <a class="dropdown-item" style="cursor: pointer" (click)="logout()">
             <span class="fe fe-log-out me-4"></span> Cerrar sesión
           </a>
@@ -120,11 +123,6 @@
             routerLinkActive="active"
           >
             <i class="fa-solid fa-gears mr-3"></i> Configuraciones
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer" (click)="logout()">
-            <span class="fe fe-log-out me-4"></span> Cerrar sesión
           </a>
         </li>
       </ul>

@@ -55,7 +55,7 @@ export class EditClienteComponent implements OnInit {
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se actulizó correctamente el nuevo cliente.',
+              message: 'Se actulizó correctamente el cliente.',
             });
             this.load_btn = false;
             this._router.navigate(['panel/clientes']);

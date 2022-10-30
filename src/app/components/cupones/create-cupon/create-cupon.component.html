@@ -27,7 +27,7 @@
           <div class="card">
             <div class="card-header">
               <!-- Title -->
-              <h4 class="card-header-title">Registro de un nuevo producto</h4>
+              <h4 class="card-header-title">Registro de un nuevo cupón</h4>
             </div>
 
             <div class="card-body">
@@ -101,20 +101,19 @@
               </div>
             </div>
             <div class="card-footer">
-              <a
-                class="btn btn-warning btn-shadow mr-3"
-                [routerLink]="['/panel/cupones']"
-                routerLinkActive="router-link-active"
-                >Regresar</a
-              >
               <button
                 *ngIf="!load_btn"
-                class="btn btn-primary btn-shadow"
+                class="btn btn-primary btn-shadow mr-3"
                 type="submit"
               >
                 Crear
               </button>
-
+              <a
+                class="btn btn-warning btn-shadow"
+                [routerLink]="['/panel/cupones']"
+                routerLinkActive="router-link-active"
+                >Regresar</a
+              >
               <button
                 disabled
                 *ngIf="load_btn"

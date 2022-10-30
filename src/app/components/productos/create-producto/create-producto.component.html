@@ -27,7 +27,7 @@
           <div class="card">
             <div class="card-header">
               <!-- Title -->
-              <h4 class="card-header-title">Actualización de producto</h4>
+              <h4 class="card-header-title">Registro de un nuevo producto</h4>
             </div>
 
             <div class="card-body">
@@ -97,6 +97,17 @@
                       </select>
                     </div> -->
                     <div class="col-12 form-group">
+                      <label for="">Descripción corta (*)</label>
+                      <textarea
+                        class="form-control mb-3"
+                        placeholder="Titulo de producto"
+                        required
+                        name="descripcion"
+                        [(ngModel)]="producto.descripcion"
+                        rows="5"
+                      ></textarea>
+
+                      <label>Descripción del producto (*)</label>
                       <editor
                         [init]="config"
                         name="contenido"
@@ -180,20 +191,19 @@
               </div>
             </div>
             <div class="card-footer">
-              <a
-                class="btn btn-warning btn-shadow mr-3"
-                [routerLink]="['/panel/productos']"
-                routerLinkActive="router-link-active"
-                >Regresar</a
-              >
               <button
                 *ngIf="!load_btn"
-                class="btn btn-primary btn-shadow"
+                class="btn btn-primary btn-shadow mr-3"
                 type="submit"
               >
                 Crear
               </button>
-
+              <a
+                class="btn btn-warning btn-shadow"
+                [routerLink]="['/panel/productos']"
+                routerLinkActive="router-link-active"
+                >Regresar</a
+              >
               <button
                 disabled
                 *ngIf="load_btn"

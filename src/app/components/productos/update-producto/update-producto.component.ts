@@ -96,7 +96,7 @@ export class UpdateProductoComponent implements OnInit {
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se actualizo correctamente el nuevo producto.',
+              message: 'Se actualizo correctamente el producto.',
             });
             this.load_btn = false;
 

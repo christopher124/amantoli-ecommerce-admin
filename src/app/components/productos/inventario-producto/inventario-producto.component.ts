@@ -86,7 +86,7 @@ export class InventarioProductoComponent implements OnInit {
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se agrego el estock al producto.',
+              message: 'Se agrego correctamente el estock al producto.',
             });
             this._productoService
               .listar_inventario_producto_admin(this.producto._id, this.token)
@@ -125,7 +125,7 @@ export class InventarioProductoComponent implements OnInit {
             class: 'text-success',
             titleColor: '#1DC74C',
             position: 'topRight',
-            message: 'Se eliminó correctamente el cliente.',
+            message: 'Se eliminó correctamente el stock del producto.',
           });
           $('#delete-' + id).modal('hide');
           $('.modal-backdrop').removeClass('show');

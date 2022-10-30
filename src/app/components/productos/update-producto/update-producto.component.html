@@ -31,7 +31,7 @@
             <div class="card">
               <div class="card-header">
                 <!-- Title -->
-                <h4 class="card-header-title">Registro de un nuevo producto</h4>
+                <h4 class="card-header-title">Actualización de producto</h4>
               </div>
 
               <div class="card-body">
@@ -103,6 +103,17 @@
                       </select>
                     </div> -->
                       <div class="col-12 form-group">
+                        <label for="">Descripción corta (*)</label>
+                        <textarea
+                          class="form-control mb-3"
+                          placeholder="Titulo de producto"
+                          required
+                          name="descripcion"
+                          [(ngModel)]="producto.descripcion"
+                          rows="5"
+                        ></textarea>
+
+                        <label>Descripción del producto (*)</label>
                         <editor
                           [init]="config"
                           name="contenido"
@@ -134,7 +145,7 @@
                   <div class="col-lg-4">
                     <div class="row">
                       <div class="col-lg-12 form-group">
-                        <label for="">Precio</label>
+                        <label for="">Precio (*)</label>
                         <input
                           type="number"
                           class="form-control"
@@ -186,20 +197,19 @@
                 </div>
               </div>
               <div class="card-footer">
-                <a
-                  class="btn btn-warning btn-shadow mr-3"
-                  [routerLink]="['/panel/productos']"
-                  routerLinkActive="router-link-active"
-                  >Regresar</a
-                >
                 <button
                   *ngIf="!load_btn"
-                  class="btn btn-primary btn-shadow"
+                  class="btn btn-primary btn-shadow mr-3"
                   type="submit"
                 >
                   Actulizar
                 </button>
-
+                <a
+                  class="btn btn-warning btn-shadow"
+                  [routerLink]="['/panel/productos']"
+                  routerLinkActive="router-link-active"
+                  >Regresar</a
+                >
                 <button
                   disabled
                   *ngIf="load_btn"
@@ -220,14 +230,28 @@
         <ng-container *ngIf="producto == undefined">
           <div class="card">
             <div class="card-body">
-              <h3 class="text-center">No se encontro el registro</h3>
-              <div class="row">
-                <div class="col-3 mx-auto">
-                  <img
-                    src="assets/img/advertencia.png"
-                    alt=""
-                    style="width: 100%"
-                  />
+              <div class="row justify-content-center">
+                <div class="col-12 col-md-5 col-xl-4 my-5">
+                  <div class="text-center">
+                    <!-- Preheading -->
+                    <h6 class="text-uppercase text-muted mb-4">Error 404</h6>
+
+                    <!-- Heading -->
+                    <h1 class="display-4 mb-3">no hay pagina aqui 😭</h1>
+
+                    <!-- Subheading -->
+                    <p class="text-muted mb-4">
+                      Parece que llegaste aquí por accidente
+                    </p>
+
+                    <!-- Button -->
+                    <a
+                      [routerLink]="['/panel/productos']"
+                      class="btn btn-lg btn-primary"
+                    >
+                      Regresar a productos
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

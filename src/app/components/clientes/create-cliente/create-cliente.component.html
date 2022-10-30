@@ -25,16 +25,10 @@
         <!-- Card -->
         <div class="card">
           <div class="card-header">
-            <h5 style="margin-bottom: 0px">Actulizar cliente</h5>
-          </div>
-          <div class="card-body">
-            <div class="input-group input-group-merge"></div>
+            <h5 style="margin-bottom: 0px">Registro de cliente</h5>
           </div>
           <form #registroForm="ngForm" (ngSubmit)="registro(registroForm)">
             <div class="card box-shadow-sm">
-              <div class="card-header">
-                <h5 style="margin-bottom: 0px">Registro de cliente</h5>
-              </div>
               <div class="card-body">
                 <div class="row">
                   <div class="col-md-4 form-group">
@@ -97,13 +91,15 @@
                     <input
                       class="form-control"
                       type="date"
+                      [max]="fechamax"
+                      [min]="fechamin"
                       name="f_nacimiento"
                       [(ngModel)]="cliente.f_nacimiento"
                       placeholder="First name"
                       required
                     />
                   </div>
-                  <div class="col-md-4 form-group">
+                  <!-- <div class="col-md-4 form-group">
                     <label for="validationCustom01" class="form-label"
                       >DNI</label
                     >
@@ -115,7 +111,7 @@
                       [(ngModel)]="cliente.dni"
                       required
                     />
-                  </div>
+                  </div> -->
 
                   <div class="col-md-4">
                     <label for="validationCustom01" class="form-label"

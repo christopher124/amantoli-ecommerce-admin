@@ -56,6 +56,13 @@
                 </div>
               </div>
               <div class="col">
+                <button
+                  class="btn btn-success mr-3"
+                  type="button"
+                  (click)="donwload_excel()"
+                >
+                  Exportar a excel
+                </button>
                 <!-- <button
                   class="btn btn-primary mr-3"
                   data-toggle="modal"
@@ -218,7 +225,7 @@
                       </div>
                     </div>
                   </td>
-                  <td>${{ item.precio }}</td>
+                  <td>$ {{ item.precio }}</td>
                   <td>{{ item.nventas }}</td>
                   <td>
                     {{ item.stock }}
@@ -253,7 +260,7 @@
                             style="cursor: pointer"
                             data-toggle="modal"
                             [attr.data-target]="'#delete-' + item._id"
-                            >Eliminar producto</a
+                            >Eliminar</a
                           >
                         </li>
                         <li>
@@ -405,9 +412,7 @@
                       >
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">
-                              Confirmacion de eliminación
-                            </h4>
+                            <h4 class="modal-title">¿Está seguro?</h4>
                             <button
                               class="close"
                               type="button"
@@ -420,7 +425,9 @@
                           <div class="modal-body">
                             <p>
                               Desea eliminar este producto,
-                              {{ item.titulo }}?
+                              <span class="text-primary">
+                                {{ item.titulo }}</span
+                              >? ¡No podrás revertir esto!
                             </p>
                           </div>
                           <div class="modal-footer">
