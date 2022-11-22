@@ -25,6 +25,10 @@ import { VariedadProductoComponent } from './components/productos/variedad-produ
 import { GaleriaProductoComponent } from './components/productos/galeria-producto/galeria-producto.component';
 import { TopnavComponent } from './components/topnav/topnav.component';
 import { DatePipe } from '@angular/common';
+import { CreateDescuentoComponent } from './components/descuento/create-descuento/create-descuento.component';
+import { EditDescuentoComponent } from './components/descuento/edit-descuento/edit-descuento.component';
+import { IndexDescuentoComponent } from './components/descuento/index-descuento/index-descuento.component';
+import { IndexContactoComponent } from './components/contacto/index-contacto/index-contacto.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { DatePipe } from '@angular/common';
     VariedadProductoComponent,
     GaleriaProductoComponent,
     TopnavComponent,
+    CreateDescuentoComponent,
+    EditDescuentoComponent,
+    IndexDescuentoComponent,
+    IndexContactoComponent,
   ],
   imports: [
     BrowserModule,

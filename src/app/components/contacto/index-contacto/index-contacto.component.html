@@ -1,0 +1,196 @@
+<app-siderbar></app-siderbar>
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <!-- Header -->
+        <div class="header mt-md-5">
+          <div class="header-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">Módulo</h6>
+
+                <!-- Title -->
+                <h1 class="header-title">Mensajes</h1>
+              </div>
+            </div>
+            <!-- / .row -->
+          </div>
+        </div>
+
+        <!-- Alert -->
+
+        <!-- Card -->
+        <div class="card">
+          <div class="card-header">
+            <!-- Title -->
+            <h4 class="card-header-title">Mostrando todos tus Mensajes</h4>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col"></div>
+              <div class="col"></div>
+            </div>
+          </div>
+          <!-- Product review -->
+          <div class="card-body" *ngIf="!load_data">
+            <div
+              class="mb-4 pb-4 border-bottom"
+              *ngFor="
+                let item of mensajes
+                  | slice
+                    : (page - 1) * pageSize
+                    : (page - 1) * pageSize + pageSize
+              "
+            >
+              <div class="row">
+                <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
+                  <h3 class="mb-2 fs-lg">{{ item.cliente }}</h3>
+                  <span class="d-block mb-3 fs-sm text-muted">{{
+                    item.createdAt | date
+                  }}</span>
+                  <span
+                    class="badge badge-primary"
+                    *ngIf="item.estado == 'Abierto'"
+                    >{{ item.estado }}</span
+                  >
+                  <span
+                    class="badge badge-danger"
+                    *ngIf="item.estado == 'Cerrado'"
+                    >{{ item.estado }}</span
+                  >
+                  <div class="mt-n1 star-rating">
+                    <i class="sr-star ci-star-filled active"></i>
+                    <i class="sr-star ci-star-filled active"></i>
+                    <i class="sr-star ci-star-filled active"></i>
+                    <i class="sr-star ci-star-filled active"></i>
+                    <i class="sr-star ci-star"></i>
+                  </div>
+                </div>
+                <div class="col">
+                  <p class="mb-3">
+                    <a class="me-1 fw-bold text-decoration-none">{{
+                      item.correo
+                    }}</a>
+                    {{ item.mensaje }}
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <a
+                      class="nav-link p-0 fs-sm"
+                      data-toggle="modal"
+                      [attr.data-target]="'#estadoModal-' + item._id"
+                      style="cursor: pointer"
+                    >
+                      <i class="ci-chat me-2 fs-base align-middle mt-n1"></i>
+                      Cerrar mensaje
+                    </a>
+                    <div
+                      class="modal fade"
+                      id="estadoModal-{{ item._id }}"
+                      tabindex="-1"
+                      role="dialog"
+                      style="display: none"
+                      aria-hidden="true"
+                    >
+                      <div
+                        class="modal-dialog modal-dialog-centered"
+                        role="document"
+                      >
+                        <div class="modal-content">
+                          <div
+                            class="modal-card card"
+                            data-list='{"valueNames": ["name"]}'
+                          >
+                            <div class="card-header">
+                              <!-- Title -->
+                              <h4
+                                class="card-header-title"
+                                id="exampleModalCenterTitle"
+                              >
+                                Confirmación de eliminación
+                              </h4>
+
+                              <!-- Close -->
+                              <button
+                                type="button"
+                                class="close"
+                                data-dismiss="modal"
+                                aria-label="Close"
+                              >
+                                <span aria-hidden="true">×</span>
+                              </button>
+                            </div>
+
+                            <div class="card-body">
+                              <p>Desea cerrar el mensaje?</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-dismiss="modal"
+                              >
+                                Cancelar
+                              </button>
+                              <button
+                                *ngIf="!load_btn"
+                                type="button"
+                                class="btn btn-danger"
+                                (click)="cerrar(item._id)"
+                              >
+                                Cerrar
+                              </button>
+                              <button
+                                *ngIf="load_btn"
+                                type="button"
+                                class="btn btn-secondary"
+                              >
+                                <span
+                                  class="spinner-grow spinner-grow-sm me-2"
+                                  role="status"
+                                  aria-hidden="true"
+                                ></span>
+                                Cerrando...
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-body" *ngIf="load_data">
+            <div class="row">
+              <div class="col-12 text-center">
+                <div
+                  class="spinner-border"
+                  style="width: 3rem; height: 3rem"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ngb-pagination
+          *ngIf="mensajes.length >= 1"
+          [(page)]="page"
+          [pageSize]="pageSize"
+          [maxSize]="10"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          [collectionSize]="mensajes.length"
+        ></ngb-pagination>
+
+        <br />
+      </div>
+    </div>
+    <!-- / .row -->
+  </div>
+</div>

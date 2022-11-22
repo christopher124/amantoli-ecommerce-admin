@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
-import { ProductoService } from 'src/app/services/producto.service';
+import { DescuentoService } from 'src/app/services/descuento.service';
 declare var iziToast: any;
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: 'app-create-producto',
-  templateUrl: './create-producto.component.html',
-  styleUrls: ['./create-producto.component.css'],
+  selector: 'app-create-descuento',
+  templateUrl: './create-descuento.component.html',
+  styleUrls: ['./create-descuento.component.css'],
 })
-export class CreateProductoComponent implements OnInit {
-  public producto: any = {
-    categoria: '',
-  };
+export class CreateDescuentoComponent implements OnInit {
+  public descuento: any = {};
   public file: any = undefined;
   public imgSelect: any | ArrayBuffer = 'assets/img/default.jpg';
   public config: any = {};
@@ -23,22 +21,12 @@ export class CreateProductoComponent implements OnInit {
   public config_global: any = {};
 
   constructor(
-    private _productoService: ProductoService,
     private _adminService: AdminService,
-    private _router: Router
+    private _router: Router,
+    private _descuentoService: DescuentoService
   ) {
-    this.config = {
-      height: 500,
-    };
     this.token = this._adminService.getToken();
-    this._adminService.obtener_config_public().subscribe(
-      (res) => {
-        this.config_global = res.data;
-      },
-      (err) => {}
-    );
   }
-
   ngOnInit(): void {}
 
   registro(registroForm: any) {
@@ -49,31 +37,39 @@ export class CreateProductoComponent implements OnInit {
           class: 'text-danger',
           titleColor: '#ff0000',
           position: 'topRight',
-          message: 'Debes subir una portada para registrar.',
+          message: 'Debes subir un banner para registrar.',
         });
       } else {
-        console.log(this.producto);
-        console.log(this.file);
-        this.load_btn = true;
-        this._productoService
-          .registro_producto_admin(this.producto, this.file, this.token)
-          .subscribe(
-            (res) => {
-              iziToast.show({
-                title: 'SUCCESS',
-                class: 'text-success',
-                titleColor: '#1DC74C',
-                position: 'topRight',
-                message: 'Se registro correctamente el nuevo producto.',
-              });
-              this.load_btn = false;
-              this._router.navigate(['/panel/descuentos']);
-            },
-            (err) => {
-              console.log(err);
-              this.load_btn = false;
-            }
-          );
+        if (this.descuento.descuento >= 1 && this.descuento.descuento <= 100) {
+          this.load_btn = true;
+          this._descuentoService
+            .registro_descuento_admin(this.descuento, this.file, this.token)
+            .subscribe(
+              (res) => {
+                iziToast.show({
+                  title: 'SUCCESS',
+                  class: 'text-success',
+                  titleColor: '#1DC74C',
+                  position: 'topRight',
+                  message: 'Se registro correctamente el descuento.',
+                });
+                this.load_btn = false;
+                this._router.navigate(['/panel/descuentos']);
+              },
+              (err) => {
+                console.log(err);
+                this.load_btn = false;
+              }
+            );
+        } else {
+          iziToast.show({
+            title: 'ERROR',
+            class: 'text-danger',
+            titleColor: '#ff0000',
+            position: 'topRight',
+            message: 'El descuento debe ser en  0% al 100%.',
+          });
+        }
       }
     } else {
       iziToast.show({
