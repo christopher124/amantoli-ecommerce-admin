@@ -26,7 +26,7 @@
         <div class="card">
           <div class="card-header">
             <!-- Title -->
-            <h4 class="card-header-title">Mostrando todos tus productos</h4>
+            <h2 class="card-header-title">Mostrando todos tus productos</h2>
           </div>
           <div class="card-body">
             <div class="row">
@@ -51,13 +51,13 @@
                     type="button"
                     (click)="resetear()"
                   >
-                    Resetear
+                    Borrar
                   </button>
                 </div>
               </div>
               <div class="col">
                 <button
-                  class="btn btn-success mr-3"
+                  class="btn btn-success mr-3 text-dark"
                   type="button"
                   (click)="donwload_excel()"
                 >
@@ -177,7 +177,7 @@
             </div>
           </div>
           <div class="table-responsive">
-            <table class="table table-sm table-nowrap card-table">
+            <table class="table table-md table-nowrap card-table">
               <thead>
                 <tr>
                   <th>Producto</th>
@@ -187,7 +187,7 @@
                   <th>Opciones</th>
                 </tr>
               </thead>
-              <tbody class="font-size-base" *ngIf="!load_data">
+              <tbody class="h3" *ngIf="!load_data">
                 <tr
                   *ngFor="
                     let item of productos
@@ -209,7 +209,7 @@
 
                       <div class="ms-3">
                         <!-- Heading -->
-                        <h4 class="fw-normal mb-1">{{ item.titulo }}</h4>
+                        <h4 class="h3 mb-1">{{ item.titulo }}</h4>
 
                         <!-- Text -->
                         <!-- <span
@@ -412,7 +412,7 @@
                       >
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">¿Está seguro?</h4>
+                            <h2 class="modal-title">¿Está seguro?</h2>
                             <button
                               class="close"
                               type="button"
@@ -422,24 +422,26 @@
                               <span aria-hidden="true">x</span>
                             </button>
                           </div>
-                          <div class="modal-body">
+                          <div class="modal-body h2">
                             <p>
-                              Desea eliminar este producto,
+                              ¿Desea eliminar este producto,
                               <span class="text-primary">
-                                {{ item.titulo }}</span
-                              >? ¡No podrás revertir esto!
+                                {{ item.titulo }}?</span
+                              >
+                              <br />
+                              ¡No podrás revertir esto!
                             </p>
                           </div>
                           <div class="modal-footer">
                             <button
-                              class="btn btn-secondary btn-sm"
+                              class="btn btn-secondary btn-md"
                               type="button"
                               data-dismiss="modal"
                             >
                               Cancelar
                             </button>
                             <button
-                              class="btn btn-primary btn-shadow btn-sm"
+                              class="btn btn-primary btn-shadow btn-md"
                               type="button"
                               (click)="eliminar(item._id)"
                               *ngIf="!load_btn"

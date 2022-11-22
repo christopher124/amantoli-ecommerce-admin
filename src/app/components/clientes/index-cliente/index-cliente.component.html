@@ -26,7 +26,7 @@
         <div class="card">
           <div class="card-header">
             <!-- Title -->
-            <h4 class="card-header-title">Mostrando todos tus clientes</h4>
+            <h2 class="card-header-title">Mostrando todos tus clientes</h2>
             <a
               class="btn btn-primary mr-3"
               [routerLink]="['/panel/clientes/registro']"
@@ -68,7 +68,7 @@
                 </div>
               </form>
               <button
-                class="btn btn-success mb-3"
+                class="btn btn-success mb-3 text-dark"
                 type="button"
                 (click)="donwload_excel()"
               >
@@ -77,16 +77,17 @@
             </div>
           </div>
           <div class="table-responsive">
-            <table class="table table-sm table-nowrap card-table">
+            <table class="table table-md table-nowrap card-table">
               <thead>
                 <tr>
                   <th>Cliente</th>
                   <th>Correo</th>
-                  <th>Telefono</th>
+                  <th>Teléfono</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
-              <tbody class="font-size-base">
+              <tbody class="h3">
+                <!-- font-size-medium -->
                 <tr
                   *ngFor="
                     let item of clientes
@@ -149,10 +150,10 @@
                       >
                         <div class="modal-content">
                           <div class="modal-header">
-                            <h4 class="modal-title">
+                            <h2 class="modal-title">
                               Eliminar, {{ item.nombres }}
                               {{ item.apellidos }}
-                            </h4>
+                            </h2>
                             <button
                               class="close"
                               type="button"
@@ -162,19 +163,19 @@
                               <span aria-hidden="true">x</span>
                             </button>
                           </div>
-                          <div class="modal-body">
+                          <div class="modal-body h2">
                             <p>Desea eliminar este cliente?</p>
                           </div>
                           <div class="modal-footer">
                             <button
-                              class="btn btn-secondary btn-sm"
+                              class="btn btn-secondary btn-md"
                               type="button"
                               data-dismiss="modal"
                             >
                               Cancelar
                             </button>
                             <button
-                              class="btn btn-primary btn-shadow btn-sm"
+                              class="btn btn-primary btn-shadow btn-md"
                               type="button"
                               (click)="eliminar(item._id)"
                             >

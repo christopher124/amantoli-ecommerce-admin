@@ -24,12 +24,13 @@
           <div *ngIf="producto != undefined" class="card">
             <div class="card-header">
               <!-- Title -->
-              <h4 class="card-header-title">Galería de variedades</h4>
+              <h2 class="card-header-title">Galería de variedades</h2>
             </div>
             <ng-container *ngIf="!load_data">
               <div class="card-body">
-                <div style="max-width: 48rem">
-                  <div class="row mb-5">
+                <div style="max-width: auto">
+                  <div class="row mb-1">
+                    <!-- mb-5 -->
                     <div class="col-md-4" style="padding-right: 0px">
                       <img
                         [src]="url + 'obtener_portada/' + producto.portada"
@@ -56,11 +57,11 @@
                       </div>
                     </div>
 
-                    <div class="form-group row align-items-center">
+                    <div class="form-group row align-items-center pt-4">
                       <div class="col-md-9">
                         <div class="form-group row align-items-center">
                           <label
-                            class="col-md-3 col-form-label font-weight-medium"
+                            class="col-md-2 h3 font-weight-md ml-3 pt-3"
                             for="text-input"
                             >Titulo
                           </label>
@@ -82,7 +83,7 @@
                       <div class="col-md-9">
                         <div class="form-group row align-items-center">
                           <label
-                            class="col-md-3 col-form-label font-weight-medium"
+                            class="col-md-2 h3 font-weight-md ml-3 pt-1"
                             for="text-input"
                             >Variedad</label
                           >
@@ -106,11 +107,11 @@
                               </button>
                             </div>
                           </div>
-                          <div class="col-md-3"></div>
+                          <div class="col-md-2"></div>
                           <div class="col-md-9">
                             <div class="table-responsive mt-3">
                               <table
-                                class="table table-sm table-bordered"
+                                class="table table-md table-bordered"
                                 *ngIf="producto.variedades"
                               >
                                 <thead class="thead-dark">
@@ -126,7 +127,7 @@
                                   <tbody>
                                     <tr>
                                       <td colspan="2" class="text-center">
-                                        <span class="text-muted"
+                                        <span class="text-muted h3"
                                           >No hay categorias disponibles</span
                                         >
                                       </td>

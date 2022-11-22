@@ -26,15 +26,13 @@
         <form #configForm="ngForm" (ngSubmit)="Actualizar(configForm)">
           <div class="card box-shadow-sm">
             <div class="card-header">
-              <h5 style="margin-bottom: 0px">Configuraciones</h5>
+              <h2 style="margin-bottom: 0px">Configuraciones</h2>
             </div>
 
             <div class="card-body">
               <div style="max-width: 48rem">
                 <div class="form-group row align-items-center">
-                  <label
-                    class="col-md-3 col-form-label font-weight-medium"
-                    for="text-input"
+                  <label class="col-md-3 h3" for="text-input"
                     >Nombre de la tienda</label
                   >
                   <div class="col-md-9">
@@ -79,11 +77,8 @@
                   </div>
                 </div> -->
                 <div class="form-group row align-items-center">
-                  <label
-                    class="col-md-3 col-form-label font-weight-medium"
-                    for="text-input"
-                    >Categorías</label
-                  >
+                  <!-- col-form-label font-weight-medium -->
+                  <label class="col-md-3 h3" for="text-input">Categorías</label>
                   <div class="col-md-4">
                     <input
                       class="form-control"
@@ -163,11 +158,7 @@
                   </div>
                 </div>
                 <div class="form-group row align-items-center">
-                  <label
-                    class="col-md-3 col-form-label font-weight-medium"
-                    for="file-input"
-                    >Logo</label
-                  >
+                  <label class="col-md-3 h3" for="file-input">Logo</label>
                   <div class="col-md-9">
                     <div class="cs-file-drop-area">
                       <div class="cs-file-drop-preview img-thumbnail rounded">

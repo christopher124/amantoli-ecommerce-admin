@@ -27,11 +27,12 @@
           <div *ngIf="producto != undefined" class="card">
             <div class="card-header">
               <!-- Title -->
-              <h4 class="card-header-title">Galería de imagenes</h4>
+              <h2 class="card-header-title">Galería de imagenes</h2>
             </div>
             <ng-container *ngIf="!load_data">
               <div class="card-body">
-                <div style="max-width: 48rem">
+                <div style="max-width: auto">
+                  <!-- max-width: 48rem -->
                   <div class="row mb-5">
                     <div class="col-md-4" style="padding-right: 0px">
                       <img
@@ -48,7 +49,9 @@
                         <div class="card-body">
                           <h3 class="card-product-title text-truncate mb-2">
                             <a class="nav-link mb-3">{{ producto.titulo }}</a>
-                            <p class="text-muted">{{ producto.descripcion }}</p>
+                            <p class="text-muted">
+                              {{ producto.descripcion }}
+                            </p>
                             <div class="d-flex align-items-center">
                               <span class="h5 d-inline-block mb-0 text-danger"
                                 >S/{{ producto.precio }}</span
@@ -63,9 +66,8 @@
                   </div>
 
                   <div class="form-group row align-items-center">
-                    <label
-                      class="col-md-3 col-form-label font-weight-medium"
-                      for="text-input"
+                    <!-- Original class="col-md-3 col-form-label font-weight-medium" -->
+                    <label class="col-md-3 h3 mt-3" for="text-input"
                       >Nueva imagen</label
                     >
                     <div class="col-md-9">
@@ -131,7 +133,7 @@
                             <tbody>
                               <tr>
                                 <td colspan="2" class="text-center">
-                                  <span class="text-muted"
+                                  <span class="text-muted h3"
                                     >No hay imagenes disponibles</span
                                   >
                                 </td>

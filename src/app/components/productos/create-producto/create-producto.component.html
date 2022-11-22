@@ -27,7 +27,7 @@
           <div class="card">
             <div class="card-header">
               <!-- Title -->
-              <h4 class="card-header-title">Registro de un nuevo producto</h4>
+              <h2 class="card-header-title">Registro de un nuevo producto</h2>
             </div>
 
             <div class="card-body">
@@ -36,7 +36,7 @@
                   <div class="row">
                     <div class="col-12">
                       <div class="form-group">
-                        <label for="exampleInputEmail1"
+                        <label for="exampleInputEmail1" class="h3"
                           >Titulo del producto (*)</label
                         >
                         <input
@@ -51,7 +51,9 @@
                     </div>
                     <div class="col-6">
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Stock (*)</label>
+                        <label for="exampleInputEmail1" class="h3"
+                          >Stock (*)</label
+                        >
                         <input
                           type="number"
                           class="form-control"
@@ -63,7 +65,9 @@
                       </div>
                     </div>
                     <div class="col-6">
-                      <label for="exampleInputEmail1">Categoría (*)</label>
+                      <label for="exampleInputEmail1" class="h3"
+                        >Categoría (*)</label
+                      >
                       <select
                         class="form-control custom-select"
                         id="select-input"
@@ -97,7 +101,7 @@
                       </select>
                     </div> -->
                     <div class="col-12 form-group">
-                      <label for="">Descripción corta (*)</label>
+                      <label for="" class="h3">Descripción corta (*)</label>
                       <textarea
                         class="form-control mb-3"
                         placeholder="Titulo de producto"
@@ -107,7 +111,7 @@
                         rows="5"
                       ></textarea>
 
-                      <label>Descripción del producto (*)</label>
+                      <label class="h3">Descripción del producto (*)</label>
                       <editor
                         [init]="config"
                         name="contenido"
@@ -139,7 +143,7 @@
                 <div class="col-lg-4">
                   <div class="row">
                     <div class="col-lg-12 form-group">
-                      <label for="">Precio (*)</label>
+                      <label for="" class="h3">Precio (*)</label>
                       <input
                         type="number"
                         class="form-control"
@@ -162,7 +166,7 @@
                       />
                     </div> -->
                     <div class="col-lg-12 form-group">
-                      <label for="">Portada (*)</label>
+                      <label for="" class="h3">Portada (*)</label>
                       <div class="custom-file">
                         <input
                           class="custom-file-input"
