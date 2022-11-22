@@ -1,72 +1,94 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
-import { ProductoService } from 'src/app/services/producto.service';
+import { DescuentoService } from 'src/app/services/descuento.service';
+import { GLOBAL } from 'src/app/services/GLOBAL';
 declare var iziToast: any;
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: 'app-create-producto',
-  templateUrl: './create-producto.component.html',
-  styleUrls: ['./create-producto.component.css'],
+  selector: 'app-edit-descuento',
+  templateUrl: './edit-descuento.component.html',
+  styleUrls: ['./edit-descuento.component.css'],
 })
-export class CreateProductoComponent implements OnInit {
-  public producto: any = {
-    categoria: '',
-  };
+export class EditDescuentoComponent implements OnInit {
+  public descuento: any = {};
   public file: any = undefined;
   public imgSelect: any | ArrayBuffer = 'assets/img/default.jpg';
   public config: any = {};
   public token;
   public load_btn = false;
-  public config_global: any = {};
+  public id: any;
+  public url = GLOBAL.url;
+
+  public load_data = true;
 
   constructor(
-    private _productoService: ProductoService,
     private _adminService: AdminService,
-    private _router: Router
+    private _router: Router,
+    private _route: ActivatedRoute,
+    private _descuentoService: DescuentoService
   ) {
-    this.config = {
-      height: 500,
-    };
     this.token = this._adminService.getToken();
-    this._adminService.obtener_config_public().subscribe(
-      (res) => {
-        this.config_global = res.data;
-      },
-      (err) => {}
-    );
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._route.params.subscribe((params) => {
+      this.id = params['id'];
+      console.log(this.id);
 
-  registro(registroForm: any) {
-    if (registroForm.valid) {
-      if (this.file == undefined) {
-        iziToast.show({
-          title: 'ERROR',
-          class: 'text-danger',
-          titleColor: '#ff0000',
-          position: 'topRight',
-          message: 'Debes subir una portada para registrar.',
-        });
-      } else {
-        console.log(this.producto);
-        console.log(this.file);
+      this._descuentoService
+        .obtener_descuento_admin(this.id, this.token)
+        .subscribe(
+          (res) => {
+            console.log(res);
+            if (res.data == undefined) {
+              this.descuento = undefined;
+              this.load_data = false;
+            } else {
+              this.descuento = res.data;
+              this.imgSelect =
+                this.url + 'obtener_banner_descuento/' + this.descuento.banner;
+              this.load_data = false;
+            }
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    });
+  }
+
+  actualizar(actualizarForm: any) {
+    if (actualizarForm.valid) {
+      if (this.descuento.descuento >= 1 && this.descuento.descuento <= 100) {
+        var data: any = {};
+
+        if (this.file != undefined) {
+          data.banner = this.file;
+        }
+
+        data.titulo = this.descuento.titulo;
+        data.descuento = this.descuento.descuento;
+        data.fecha_inicio = this.descuento.fecha_inicio;
+        data.fecha_fin = this.descuento.fecha_fin;
+
         this.load_btn = true;
-        this._productoService
-          .registro_producto_admin(this.producto, this.file, this.token)
+        this._descuentoService
+          .actulizar_descuento_admin(data, this.id, this.token)
           .subscribe(
             (res) => {
+              console.log(res);
               iziToast.show({
                 title: 'SUCCESS',
                 class: 'text-success',
                 titleColor: '#1DC74C',
                 position: 'topRight',
-                message: 'Se registro correctamente el nuevo producto.',
+                message: 'Se actualizo correctamente el descuento.',
               });
               this.load_btn = false;
+
               this._router.navigate(['/panel/descuentos']);
             },
             (err) => {
@@ -74,6 +96,14 @@ export class CreateProductoComponent implements OnInit {
               this.load_btn = false;
             }
           );
+      } else {
+        iziToast.show({
+          title: 'ERROR',
+          class: 'text-danger',
+          titleColor: '#ff0000',
+          position: 'topRight',
+          message: 'El descuento debe ser en  0% al 100%.',
+        });
       }
     } else {
       iziToast.show({
@@ -84,10 +114,6 @@ export class CreateProductoComponent implements OnInit {
         message: 'Los datos del formulario no son validos.',
       });
       this.load_btn = false;
-
-      $('#input-portada').text('Seleccionar imagen');
-      this.imgSelect = 'assets/img/default.jpg';
-      this.file = undefined;
     }
   }
 
@@ -105,7 +131,7 @@ export class CreateProductoComponent implements OnInit {
         message: 'No hay una imagen de envio.',
       });
       $('#input-portada').text('Seleccionar imagen');
-      this.imgSelect = 'assets/img/default.jpg';
+      this.imgSelect = 'assets/img/01.jpg';
       this.file = undefined;
     }
     if (file?.size) {
@@ -132,7 +158,7 @@ export class CreateProductoComponent implements OnInit {
           message: 'El archivo debe de ser imagen.',
         });
         $('#input-portada').text('Seleccionar imagen');
-        this.imgSelect = 'assets/img/default.jpg';
+        this.imgSelect = 'assets/img/01.jpg';
         this.file = undefined;
       }
     } else {
@@ -144,7 +170,7 @@ export class CreateProductoComponent implements OnInit {
         message: 'La imagen no puede superar los 4MB.',
       });
       $('#input-portada').text('Seleccionar imagen');
-      this.imgSelect = 'assets/img/default.jpg';
+      this.imgSelect = 'assets/img/01.jpg';
       this.file = undefined;
     }
     console.log(this.file);

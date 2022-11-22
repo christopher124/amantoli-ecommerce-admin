@@ -103,4 +103,22 @@ export class AdminService {
       headers: headers,
     });
   }
+  obtener_mensajes_admin(token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.get(this.url + 'obtener_mensajes_admin', {
+      headers: headers,
+    });
+  }
+  cerrar_mensajes_admin(id: any, data: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.put(this.url + 'cerrar_mensajes_admin/' + id, data, {
+      headers: headers,
+    });
+  }
 }
