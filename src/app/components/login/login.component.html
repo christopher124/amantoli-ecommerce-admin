@@ -7,74 +7,83 @@
     background-image: url(../../../assets/img/Originals/arte-admin2.jpg);
     background-position: center center;
   }
+  .font {
+    font-size: xx-large;
+  }
+  .font-l {
+    font-size: larger;
+  }
+  .bg-color {
+    height: 100%;
+  }
 </style>
 
-<div class="container w-75 bg-primary mt-5 shadow rounded">
-  <div class="row align-items-stretch">
-    <div
-      class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"
-    ></div>
-    <div class="col bg-white p-5 rounded-right">
-      <div class="text-center">
-        <img
-          src="../../../assets/img/Originals/AMANTOLI.png"
-          width="138"
-          alt=""
-        />
-      </div>
-      <h1 class="fw-bold text-center py-3">Bienvenido</h1>
-      <!-- Login -->
+<section class="bg-color">
+  <div class="container w-75 bg-primary mt-7 shadow rounded">
+    <div class="row align-items-stretch">
+      <div
+        class="col bg d-none d-lg-block col-md-5 col-lg-5 col-xl-6 rounded"
+      ></div>
+      <div class="col bg-white p-5 rounded-right">
+        <div class="text-center">
+          <img
+            src="../../../assets/img/Originals/AMANTOLI1.png"
+            width="268"
+            height="200"
+            alt=""
+          />
+        </div>
+        <h1 class="fw-bold text-center py-3 font">¡Bienvenido!</h1>
+        <!-- Login -->
 
-      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
-        <div class="mb-4">
-          <label for="signin-email" class="form-label"
-            >Correo electrónico</label
-          >
-          <input
-            type="email"
-            class="form-control"
-            name="email"
-            [(ngModel)]="user.email"
-            placeholder="Correo electrónico"
-            required=""
-          />
-        </div>
-        <div class="mb-4">
-          <label for="signin-password" class="form-label">Contraseña</label>
-          <input
-            type="password"
-            class="form-control appended-form-control"
-            name="password"
-            [(ngModel)]="user.password"
-            placeholder="Ingrese la contraseña"
-            required=""
-          />
-        </div>
-        <div class="mb-4 form-check">
-          <input
-            type="checkbox"
-            name="connected"
-            class="form-check-input"
-            id=""
-          />
-          <label for="connected" class="form-check-label"
-            >Mantenerme conectado</label
-          >
-        </div>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+          <div class="mb-4">
+            <label for="signin-email" class="form-label font-l"
+              >Correo electrónico</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              name="email"
+              [(ngModel)]="user.email"
+              placeholder="Correo electrónico"
+              required=""
+            />
+          </div>
+          <div class="mb-4">
+            <label for="signin-password" class="form-label font-l"
+              >Contraseña</label
+            >
+            <input
+              type="password"
+              class="form-control appended-form-control"
+              name="password"
+              [(ngModel)]="user.password"
+              placeholder="Ingrese la contraseña"
+              required=""
+            />
+          </div>
+          <div class="mb-4 form-check">
+            <input
+              type="checkbox"
+              name="connected"
+              class="form-check-input"
+              id=""
+            />
+            <label for="connected" class="form-check-label"
+              >Mantenerme conectado</label
+            >
+          </div>
 
-        <button type="submit" class="btn btn-primary btn-block">
-          Iniciar sesión
-        </button>
-        <!-- <div class="d-grid">
+          <button type="submit" class="btn btn-primary btn-block">
+            Iniciar sesión
+          </button>
+          <!-- <div class="d-grid">
           <button type="submit" class="btn btn-primary">Iniciar sesión</button>
         </div> -->
-
-        <div class="my-3">
-          <span><a href="#">Recuperar contraseña</a></span>
-        </div>
-      </form>
-      <!-- Login con redes sociales -->
-      <div class="container w-100 my-5">
+        </form>
+        <!-- Login con redes sociales -->
+        <!-- <div class="container w-100 my-5">
         <div class="row text-center">
           <div class="col-12">Iniciar sesión</div>
         </div>
@@ -100,7 +109,8 @@
             </button>
           </div>
         </div>
+      </div> -->
       </div>
     </div>
   </div>
-</div>
+</section>
