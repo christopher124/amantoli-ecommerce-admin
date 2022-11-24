@@ -51,7 +51,7 @@
                     type="button"
                     (click)="resetear()"
                   >
-                    Resetear
+                    Borrar filtro
                   </button>
                 </div>
               </div>
@@ -237,7 +237,7 @@
                         </div>
                       </div>
                     </td>
-                    <td>$ {{ item.descuento }}</td>
+                    <td>% {{ item.descuento }}</td>
                     <td>{{ item.fecha_inicio }} - {{ item.fecha_fin }}</td>
                     <td>
                       <span
@@ -403,7 +403,7 @@
                             </div>
                             <div class="modal-body h2">
                               <p>
-                                Desea eliminar este producto,
+                                ¿Desea eliminar este producto,
                                 <span class="text-primary">
                                   {{ item.titulo }}? </span
                                 ><br />
@@ -424,7 +424,7 @@
                                 (click)="eliminar(item._id)"
                                 *ngIf="!load_btn"
                               >
-                                si, eliminar
+                                Sí, eliminar
                               </button>
                               <button
                                 *ngIf="load_btn"

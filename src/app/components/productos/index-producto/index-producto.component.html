@@ -35,7 +35,7 @@
                   <input
                     class="form-control mr-3"
                     type="text"
-                    placeholder="Titulo del producto"
+                    placeholder="Título del producto"
                     name="filtro"
                     [(ngModel)]="filtro"
                   />
@@ -61,7 +61,7 @@
                   type="button"
                   (click)="donwload_excel()"
                 >
-                  Exportar a excel
+                  Exportar a Excel
                 </button>
                 <!-- <button
                   class="btn btn-primary mr-3"
@@ -183,7 +183,7 @@
                   <th>Producto</th>
                   <th>Precio</th>
                   <th>Ventas</th>
-                  <th>Stock</th>
+                  <th>Existencia</th>
                   <th>Opciones</th>
                 </tr>
               </thead>
@@ -456,7 +456,7 @@
                               (click)="eliminar(item._id)"
                               *ngIf="!load_btn"
                             >
-                              si, eliminar
+                              Sí, eliminar
                             </button>
                             <button
                               *ngIf="load_btn"

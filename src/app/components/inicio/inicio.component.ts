@@ -46,7 +46,7 @@ export class InicioComponent implements OnInit {
               'Septiembre',
               'Octubre',
               'Noviembre',
-              'diciembre',
+              'Diciembre',
             ],
             datasets: [
               {

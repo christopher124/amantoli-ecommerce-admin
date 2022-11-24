@@ -60,11 +60,11 @@ export class CreateClienteComponent implements OnInit {
         .subscribe(
           (res) => {
             iziToast.show({
-              title: 'SUCCESS',
+              title: 'Éxito',
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: res.message,
+              message: "Se registró correctamente",
             });
             this.cliente = {
               genero: '',
@@ -94,7 +94,7 @@ export class CreateClienteComponent implements OnInit {
         class: 'text-danger',
         titleColor: '#ff0000',
         position: 'topRight',
-        message: 'Los datos del formulario no son validos.',
+        message: 'Los datos del formulario no son válidos.',
       });
     }
   }
