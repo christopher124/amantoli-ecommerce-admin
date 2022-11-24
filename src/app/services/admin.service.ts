@@ -121,4 +121,61 @@ export class AdminService {
       headers: headers,
     });
   }
+  obtener_ventas_admin(desde: any, hasta: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.get(
+      this.url + 'obtener_ventas_admin/' + desde + '/' + hasta,
+      {
+        headers: headers,
+      }
+    );
+  }
+  obtener_detalles_ordenes_cliente(id: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.get(this.url + 'obtener_detalles_ordenes_cliente/' + id, {
+      headers: headers,
+    });
+  }
+  eliminar_orden_admin(id: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.delete(this.url + 'eliminar_orden_admin/' + id, {
+      headers: headers,
+    });
+  }
+  marcar_envio_orden(id: any, data: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.put(this.url + 'marcar_envio_orden/' + id, data, {
+      headers: headers,
+    });
+  }
+  marcar_finalizado_orden(id: any, data: any, token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.put(this.url + 'marcar_finalizado_orden/' + id, data, {
+      headers: headers,
+    });
+  }
+  kpi_ganancias_mensaules_admin(token: any): Observable<any> {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: token,
+    });
+    return this._http.get(this.url + 'kpi_ganancias_mensaules_admin', {
+      headers: headers,
+    });
+  }
 }

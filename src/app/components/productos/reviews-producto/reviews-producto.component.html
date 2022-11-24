@@ -1,0 +1,151 @@
+<app-siderbar></app-siderbar>
+
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-10 col-xl-8">
+        <!-- Header -->
+        <div class="header mt-md-5">
+          <div class="header-body">
+            <div class="row align-items-center">
+              <div class="col">
+                <!-- Pretitle -->
+                <h6 class="header-pretitle">Módulo</h6>
+
+                <!-- Title -->
+                <h1 class="header-title">Productos</h1>
+              </div>
+            </div>
+            <!-- / .row -->
+          </div>
+        </div>
+
+        <!-- Alert -->
+
+        <ng-container>
+          <!-- Card -->
+          <div *ngIf="reviews != undefined" class="card">
+            <div class="card-header">
+              <!-- Title -->
+              <h2 class="card-header-title">Reseñas de productos</h2>
+            </div>
+            <div class="card-body">
+              <div class="row mb-1">
+                <!-- mb-5 -->
+                <div class="col-md-4" style="padding-right: 0px">
+                  <img
+                    [src]="url + 'obtener_portada/' + producto.portada"
+                    class="img-thumbnail rounded-0"
+                    alt="Square image"
+                  />
+                </div>
+                <div class="col-md-8" style="padding-left: 0px">
+                  <div class="card" style="height: 100%; background: #f5eeee">
+                    <div class="card-body">
+                      <h3 class="card-product-title text-truncate mb-2">
+                        <a class="nav-link mb-3">{{ producto.titulo }}</a>
+                        <p class="text-muted">{{ producto.descripcion }}</p>
+                        <div class="d-flex align-items-center">
+                          <span class="h5 d-inline-block mb-0 text-danger"
+                            >${{ producto.precio }}</span
+                          >
+                        </div>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <div class="row mb-1" *ngFor="let item of reviews">
+                <!-- Product review -->
+                <div class="mb-4 pb-4 border-bottom">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-4 mb-sm-0 mb-3">
+                      <h3 class="mb-2 fs-lg">
+                        {{ item.cliente.nombres }} -
+                        {{ item.cliente.apellidos }}
+                      </h3>
+                      <span class="d-block mb-3 fs-sm text-muted">{{
+                        item.createdAt | date
+                      }}</span>
+                      <div class="mt-n1 star-rating">
+                        <i
+                          class="sr-star ci-star-filled active"
+                          [ngClass]="{ active: item.estrellas >= 1 }"
+                        ></i>
+                        <i
+                          class="sr-star ci-star-filled active"
+                          [ngClass]="{ active: item.estrellas >= 2 }"
+                        ></i>
+                        <i
+                          class="sr-star ci-star-filled active"
+                          [ngClass]="{ active: item.estrellas >= 3 }"
+                        ></i>
+                        <i
+                          class="sr-star ci-star-filled active"
+                          [ngClass]="{ active: item.estrellas >= 4 }"
+                        ></i>
+                        <i
+                          class="sr-star ci-star-filled active"
+                          [ngClass]="{ active: item.estrellas >= 5 }"
+                        ></i>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <p class="mb-3">
+                        <a class="me-1 fw-bold text-decoration-none" href="#"
+                          >@{{ item.cliente.email }}</a
+                        >
+                        {{ item.review }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-container *ngIf="reviews == undefined">
+            <div class="card">
+              <div class="card-body">
+                <div class="row justify-content-center">
+                  <div class="col-12 col-md-5 col-xl-4 my-5">
+                    <div class="text-center">
+                      <!-- Preheading -->
+                      <h6 class="text-uppercase text-muted mb-4">404 error</h6>
+
+                      <!-- Heading -->
+                      <h1 class="display-4 mb-3">There’s no page here 😭</h1>
+
+                      <!-- Subheading -->
+                      <p class="text-muted mb-4">
+                        Looks like you ended up here by accident?
+                      </p>
+
+                      <!-- Button -->
+                      <a
+                        [routerLink]="['/productos']"
+                        class="btn btn-lg btn-primary"
+                      >
+                        Regresar a productos
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+        <div class="card-footer">
+          <ngb-pagination
+            [(page)]="page"
+            [pageSize]="pageSize"
+            [collectionSize]="reviews.length"
+          >
+          </ngb-pagination>
+        </div>
+      </div>
+    </div>
+    <!-- / .row -->
+  </div>
+</div>

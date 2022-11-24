@@ -293,6 +293,16 @@
                             >Galería</a
                           >
                         </li>
+                        <li>
+                          <a
+                            class="dropdown-item"
+                            [routerLink]="[
+                              '/panel/productos/reviews',
+                              item._id
+                            ]"
+                            >Reseñas</a
+                          >
+                        </li>
 
                         <!-- <a
                           *ngIf="item.estado == 'Edicion'"
