@@ -67,7 +67,7 @@ export class CreateProductoComponent implements OnInit {
                 message: 'Se registro correctamente el nuevo producto.',
               });
               this.load_btn = false;
-              this._router.navigate(['/panel/descuentos']);
+              this._router.navigate(['/panel/productos']);
             },
             (err) => {
               console.log(err);
