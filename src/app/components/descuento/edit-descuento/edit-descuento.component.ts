@@ -81,11 +81,11 @@ export class EditDescuentoComponent implements OnInit {
             (res) => {
               console.log(res);
               iziToast.show({
-                title: 'SUCCESS',
+                title: 'Éxito',
                 class: 'text-success',
                 titleColor: '#1DC74C',
                 position: 'topRight',
-                message: 'Se actualizo correctamente el descuento.',
+                message: 'Se actualizó correctamente el descuento.',
               });
               this.load_btn = false;
 

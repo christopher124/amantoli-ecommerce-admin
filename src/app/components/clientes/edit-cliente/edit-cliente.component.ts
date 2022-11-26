@@ -51,7 +51,7 @@ export class EditClienteComponent implements OnInit {
         .subscribe(
           (res) => {
             iziToast.show({
-              title: 'SUCCESS',
+              title: 'Éxito',
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',

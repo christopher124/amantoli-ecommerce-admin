@@ -92,11 +92,11 @@ export class UpdateProductoComponent implements OnInit {
           (res) => {
             console.log(res);
             iziToast.show({
-              title: 'SUCCESS',
+              title: 'Éxito',
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se actualizo correctamente el producto.',
+              message: 'Se actualizó correctamente el producto.',
             });
             this.load_btn = false;
 

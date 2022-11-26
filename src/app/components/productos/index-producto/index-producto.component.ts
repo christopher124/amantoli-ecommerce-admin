@@ -83,7 +83,7 @@ export class IndexProductoComponent implements OnInit {
     this._productoService.eliminar_producto_admin(id, this.token).subscribe(
       (res) => {
         iziToast.show({
-          title: 'SUCCESS',
+          title: 'Éxito',
           class: 'text-success',
           titleColor: '#1DC74C',
           position: 'topRight',
@@ -97,11 +97,11 @@ export class IndexProductoComponent implements OnInit {
       },
       (err) => {
         iziToast.show({
-          title: 'SUCCESS',
+          title: 'Error',
           class: 'text-success',
           titleColor: '#1DC74C',
           position: 'topRight',
-          message: 'Ocurrio un error en el servidor.',
+          message: 'Ocurrió un error en el servidor.',
         });
         console.log(err);
         this.load_btn = true;

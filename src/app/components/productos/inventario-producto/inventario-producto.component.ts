@@ -82,11 +82,11 @@ export class InventarioProductoComponent implements OnInit {
         .subscribe(
           (res) => {
             iziToast.show({
-              title: 'SUCCESS',
+              title: 'Éxito',
               class: 'text-success',
               titleColor: '#1DC74C',
               position: 'topRight',
-              message: 'Se agrego correctamente el estock al producto.',
+              message: 'Se agregó correctamente el estock al producto.',
             });
             this._productoService
               .listar_inventario_producto_admin(this.producto._id, this.token)
@@ -121,7 +121,7 @@ export class InventarioProductoComponent implements OnInit {
       .subscribe(
         (res) => {
           iziToast.show({
-            title: 'SUCCESS',
+            title: 'Éxito',
             class: 'text-success',
             titleColor: '#1DC74C',
             position: 'topRight',
@@ -145,7 +145,7 @@ export class InventarioProductoComponent implements OnInit {
         },
         (err) => {
           iziToast.show({
-            title: 'SUCCESS',
+            title: 'Éxito',
             class: 'text-success',
             titleColor: '#1DC74C',
             position: 'topRight',

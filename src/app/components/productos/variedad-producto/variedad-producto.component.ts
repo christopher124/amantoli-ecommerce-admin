@@ -87,12 +87,12 @@ export class VariedadProductoComponent implements OnInit {
           .subscribe(
             (res) => {
               iziToast.show({
-                title: 'SUCCESS',
+                title: 'Éxito',
                 class: 'text-success',
                 titleColor: '#1DC74C',
                 position: 'topRight',
                 message:
-                  'Se actualizo correctamente las variedades del producto.',
+                  'Se actualizó correctamente las variedades del producto.',
               });
               this.load_btn = false;
             },

@@ -47,11 +47,11 @@ export class CreateDescuentoComponent implements OnInit {
             .subscribe(
               (res) => {
                 iziToast.show({
-                  title: 'SUCCESS',
+                  title: 'Éxito',
                   class: 'text-success',
                   titleColor: '#1DC74C',
                   position: 'topRight',
-                  message: 'Se registro correctamente el descuento.',
+                  message: 'Se registró correctamente el descuento.',
                 });
                 this.load_btn = false;
                 this._router.navigate(['/panel/descuentos']);

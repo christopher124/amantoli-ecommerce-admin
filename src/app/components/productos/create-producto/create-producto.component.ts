@@ -60,11 +60,11 @@ export class CreateProductoComponent implements OnInit {
           .subscribe(
             (res) => {
               iziToast.show({
-                title: 'SUCCESS',
+                title: 'Éxito',
                 class: 'text-success',
                 titleColor: '#1DC74C',
                 position: 'topRight',
-                message: 'Se registro correctamente el nuevo producto.',
+                message: 'Se registró correctamente el nuevo producto.',
               });
               this.load_btn = false;
               this._router.navigate(['/panel/productos']);

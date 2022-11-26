@@ -25,11 +25,11 @@ export class CreateCuponComponent implements OnInit {
       this._cuponService.registro_cupon_admin(this.cupon, this.token).subscribe(
         (res) => {
           iziToast.show({
-            title: 'SUCCESS',
+            title: 'Éxito',
             class: 'text-success',
             titleColor: '#1DC74C',
             position: 'topRight',
-            message: 'Se registro correctamente el nuevo cupón.',
+            message: 'Se registró correctamente el nuevo cupón.',
           });
           this.load_btn = false;
 

@@ -71,7 +71,7 @@ export class DetalleVentasComponent implements OnInit {
       .marcar_finalizado_orden(id, { data: '' }, this.token)
       .subscribe((response) => {
         iziToast.show({
-          title: 'SUCCESS',
+          title: 'Éxito',
           titleColor: '#1DC74C',
           color: '#FFF',
           class: 'text-success',
@@ -92,7 +92,7 @@ export class DetalleVentasComponent implements OnInit {
         .marcar_envio_orden(id, { tracking: this.tracking }, this.token)
         .subscribe((response) => {
           iziToast.show({
-            title: 'SUCCESS',
+            title: 'Éxito',
             titleColor: '#1DC74C',
             color: '#FFF',
             class: 'text-success',
@@ -122,12 +122,12 @@ export class DetalleVentasComponent implements OnInit {
       .eliminar_orden_admin(id, this.token)
       .subscribe((response) => {
         iziToast.show({
-          title: 'SUCCESS',
+          title: 'Éxito',
           titleColor: '#1DC74C',
           color: '#FFF',
           class: 'text-success',
           position: 'topRight',
-          message: 'El pedido fue eliminada correctamente.',
+          message: 'El pedido fue eliminado correctamente.',
         });
         $('#openEliminar').modal('hide');
         $('.modal-backdrop').remove();
